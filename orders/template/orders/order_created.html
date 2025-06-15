@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+</head>
+<body>
+
+    {% extends 'base.html' %}
+
+    {% block content %}
+
+        <h2>Thank you for your order!</h2>
+        <p>Your order number is <strong>#{{order.id}}</strong></p>
+        <p>We'll process your order shortly.</p>
+
+    {% endblock %}
+
+</body>
+</html>
