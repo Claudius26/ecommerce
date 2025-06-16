@@ -16,17 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.urls import path, include
 
-
-def home_view(request):
-    return HttpResponse("Welcome to the homepage!")
+from store.models import Product
 
 
 urlpatterns = [
+    path('', include('store.urls')),
     path('admin/', admin.site.urls),
     path('cart/', include('cart.urls')),
-    path('', home_view),
     path('orders/', include('orders.urls')),
     path('accounts/', include('accounts.urls')),
+    path('store/', include('store.urls')),
 ]

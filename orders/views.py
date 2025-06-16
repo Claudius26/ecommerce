@@ -21,4 +21,8 @@ def order_create(request):
     cart.clear()
     return render(request, 'orders/order_created.html', {'order': order})
 
+@login_required
+def order_history(request):
+    orders = Order.objects.filter(user=request.user).order_by('-created-at')
+    return render(request, 'orders/order_history.html', {'orders': orders})
 # Create your views here.

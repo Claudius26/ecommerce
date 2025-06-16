@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Your Order History</h2>
+  {% if orders %}
+    <ul class="list-group">
+      {% for order in orders %}
+        <li class="list-group-item">
+          Order #{{ order.id }} — {{ order.created_at|date:"M d, Y H:i" }}
+          <ul>
+            {% for item in order.items.all %}
+              <li>{{ item.product.name }} (x{{ item.quantity }}) - ₦{{ item.price|floatformat:2 }}</li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>You have not placed any orders yet.</p>
+  {% endif %}
+{% endblock %}
